@@ -1,17 +1,30 @@
 package tictactoe.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
-    private int dimnensions;
+    private int dimensions;
     private List<List<Cell>> board;
 
-    public int getDimnensions() {
-        return dimnensions;
+    public Board(int dimensions) {
+        this.dimensions = dimensions;
+
+        for(int i=0;i<dimensions;i++) {
+            board.add(new ArrayList<>());
+
+            for(int j=0;j<dimensions;j++) {
+                board.get(i).add(new Cell(i, j));
+            }
+        }
+
+     }
+    public int getDimensions() {
+        return dimensions;
     }
 
-    public void setDimnensions(int dimnensions) {
-        this.dimnensions = dimnensions;
+    public void setDimensions(int dimensions) {
+        this.dimensions = dimensions;
     }
 
     public List<List<Cell>> getBoard() {

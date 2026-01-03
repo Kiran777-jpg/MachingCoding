@@ -2,6 +2,7 @@ package tictactoe.models;
 
 import tictactoe.models.enums.GameState;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -12,6 +13,19 @@ public class Game {
     private GameState gameState;
     private int nextMovePlayerIndex;
     private List<WinningStrategy> winningStrategies;
+
+    public static Builder getBuilder() {
+        return new Builder();
+    }
+
+    private Game(int dimension, List<Player> players, List<WinningStrategy> winningStrategies) {
+        this.board = new Board(dimension);
+        this.players = players;
+        this.moves = new ArrayList<>();
+        this.gameState = GameState.IN_PROGRESS;
+        this.nextMovePlayerIndex = 0;
+        this.winningStrategies = winningStrategies;
+    }
 
     public Board getBoard() {
         return board;
@@ -67,5 +81,37 @@ public class Game {
 
     public void setWinningStrategies(List<WinningStrategy> winningStrategies) {
         this.winningStrategies = winningStrategies;
+    }
+
+    public static class Builder {
+
+        private int dimensions;
+        private List<Player> players;
+        private List<WinningStrategy> winningStrategies;
+
+        private Builder() {
+            this.dimensions = 0;
+            this.players = new ArrayList<>();
+            this.winningStrategies = new ArrayList<>();
+        }
+
+        public Game build() {
+            return new Game(dimensions, players, winningStrategies);
+        }
+
+        public Builder setDimensions(int dimensions) {
+            this.dimensions = dimensions;
+            return this;
+        }
+
+        public Builder setPlayers(List<Player> players) {
+            this.players = players;
+            return this;
+        }
+
+        public Builder setWinningStrategies(List<WinningStrategy> winningStrategies) {
+            this.winningStrategies = winningStrategies;
+            return this;
+        }
     }
 }

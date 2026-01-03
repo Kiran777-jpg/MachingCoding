@@ -1,11 +1,18 @@
 package tictactoe.models;
 
 import tictactoe.models.enums.BotDifficultyLevel;
+import tictactoe.models.enums.PlayerType;
 import tictactoe.strategies.botPlayingStrategy.BotPlayingStrategy;
 
 public class Bot extends Player{
     private BotDifficultyLevel botDifficultyLevel;
     private BotPlayingStrategy botPlayingStrategy;
+
+    public Bot(String name, Symbol symbol, PlayerType playerType, BotDifficultyLevel botDifficultyLevel, BotPlayingStrategy botPlayingStrategy) {
+        super(name, symbol, playerType);
+        this.botDifficultyLevel = botDifficultyLevel;
+        this.botPlayingStrategy = botPlayingStrategy;
+    }
 
     public BotDifficultyLevel getBotDifficultyLevel() {
         return botDifficultyLevel;
