@@ -28,6 +28,10 @@ public class Game {
         this.winningStrategies = winningStrategies;
     }
 
+    public void printBoard() {
+        board.printBoard();
+    }
+
     public Board getBoard() {
         return board;
     }

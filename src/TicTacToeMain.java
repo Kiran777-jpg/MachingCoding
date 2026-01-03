@@ -1,7 +1,9 @@
+import tictactoe.controllers.GameController;
 import tictactoe.models.Bot;
 import tictactoe.models.Game;
 import tictactoe.models.Player;
 import tictactoe.models.Symbol;
+import tictactoe.models.enums.GameState;
 import tictactoe.strategies.winningStrategy.ColWinningStrategy;
 import tictactoe.strategies.winningStrategy.DiagonalWinningStrategy;
 import tictactoe.strategies.winningStrategy.RowWinningStrategy;
@@ -18,9 +20,11 @@ public class TicTacToeMain {
     public static void main(String[] args) {
         System.out.println("Hello world, printed by " + Thread.currentThread().getName());
 
-        System.out.println("Game Starts");
-
+        GameController gameController = new GameController();
         Scanner sc = new Scanner(System.in);
+
+        System.out.println("GAME STARTS");
+
         int dimensions = sc.nextInt();
         List<Player> players = List.of(
                 new Player("John", new Symbol('X'), PlayerType.HUMAN),
@@ -33,10 +37,15 @@ public class TicTacToeMain {
                 new DiagonalWinningStrategy()
         );
 
-        Game game = Game.getBuilder().setDimensions(dimensions)
-                                     .setPlayers(players)
-                                     .setWinningStrategies(winningStrategies)
-                                     .build();
+        Game game = gameController.startGame(dimensions, players, winningStrategies);
+
+        while(gameController.getGameState().equals(GameState.IN_PROGRESS)) {
+
+            //1. show the board
+            //2. make a move
+            game.printBoard(game);
+
+        }
     }
 }
 
