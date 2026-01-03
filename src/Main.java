@@ -5,3 +5,6 @@ public class Main {
         System.out.println("Hello world, printed by " + Thread.currentThread().getName());
     }
 }
+
+// create the models
+// create the way to create a objects using builder or normal
