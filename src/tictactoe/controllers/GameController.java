@@ -21,6 +21,10 @@ public class GameController {
         return game.getGameState();
     }
 
+    public Player getWinner(Game game) {
+        return game.getWinner();
+    }
+
     public void printBoard(Game game) {
         game.printBoard();
     }
@@ -29,6 +33,9 @@ public class GameController {
         game.makeMove();
     }
 
+    public boolean getcurrentPlayerBot(Game game) {
+        return game.getcurrentPlayerBot();
+    }
     public void undo(Game game) {
         // todo
     }

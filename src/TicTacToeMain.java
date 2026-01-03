@@ -48,7 +48,9 @@ public class TicTacToeMain {
             //2. make a move
             gameController.printBoard(game);
 
-            System.out.println("Do you want to undo ? y/n");
+            if(!gameController.getcurrentPlayerBot(game)) {
+                System.out.println("Do you want to undo ? y/n");
+            }
             String isUndo = sc.next();
             if(isUndo.equals("y")) {
                 gameController.undo(game);
@@ -56,6 +58,12 @@ public class TicTacToeMain {
             }
 
             gameController.makeMove(game);
+        }
+        gameController.printBoard(game);
+        if(gameController.getGameState(game).equals(GameState.ENDED)) {
+            System.out.println(gameController.getWinner(game).getName() + " has won the game");
+        } else {
+            System.out.println("GAME DRAW");
         }
     }
 }

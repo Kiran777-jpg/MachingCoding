@@ -3,6 +3,7 @@ package tictactoe.models;
 import tictactoe.exceptions.InvalidMoveException;
 import tictactoe.models.enums.CellState;
 import tictactoe.models.enums.GameState;
+import tictactoe.models.enums.PlayerType;
 import tictactoe.strategies.winningStrategy.WinningStrategy;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class Game {
     private Board board;
     private List<Player> players;
     private List<Move> moves;
-    private Player currentPlayer;
+    private Player winner;
     private GameState gameState;
     private int nextMovePlayerIndex;
     private List<WinningStrategy> winningStrategies;
@@ -52,8 +53,32 @@ public class Game {
         Move finalMove =new Move(cell, currentPlayer);
         moves.add(finalMove);
 
+        if(checkWinner(move)) {
+            winner = currentPlayer;
+            gameState = GameState.ENDED;
+        } else if(moves.size() == (board.getDimensions() * board.getDimensions())) {
+            gameState = GameState.DRAW;
+        }
+
         nextMovePlayerIndex = (nextMovePlayerIndex + 1)%players.size();
     }
+
+    public boolean checkWinner(Move move) {
+        for(WinningStrategy winningStrategy : winningStrategies) {
+            if(winningStrategy.checkWinner(board, move)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean getcurrentPlayerBot() {
+        if(players != null) {
+            return players.get(nextMovePlayerIndex).getPlayerType().equals(PlayerType.BOT);
+        }
+        return false;
+    }
+
 
     public void printBoard() {
         board.printBoard();
@@ -83,12 +108,12 @@ public class Game {
         this.moves = moves;
     }
 
-    public Player getCurrentPlayer() {
-        return currentPlayer;
+    public Player getWinner() {
+        return winner;
     }
 
-    public void setCurrentPlayer(Player currentPlayer) {
-        this.currentPlayer = currentPlayer;
+    public void setWinner(Player winner) {
+        this.winner = winner;
     }
 
     public GameState getGameState() {
