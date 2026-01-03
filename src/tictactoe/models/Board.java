@@ -11,6 +11,7 @@ public class Board {
 
     public Board(int dimensions) {
         this.dimensions = dimensions;
+        board = new ArrayList<>();
 
         for(int i=0;i<dimensions;i++) {
             board.add(new ArrayList<>());
