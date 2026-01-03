@@ -12,6 +12,7 @@ import tictactoe.strategies.winningStrategy.WinningStrategy;
 import tictactoe.models.enums.BotDifficultyLevel;
 import tictactoe.models.enums.PlayerType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,14 +26,24 @@ public class TicTacToeMain {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("GAME STARTS");
+        System.out.println("Players Registration: ");
+        System.out.print("Enter the Players Count: ");
+        int playersCount = sc.nextInt();
+        List<Player> players = new ArrayList<>();
+        for(int i=0;i<playersCount;i++) {
+            System.out.print("Player " + (i+1) + ": Human - 1/Bot - 2: ");
+            int playerType = sc.nextInt();
+            System.out.print("Enter Player " + (i+1) + " Name: ");
+            String playerName = sc.next();
+            System.out.print("Enter Player " + (i+1) + " Symbol: ");
+            String playerSymbol = sc.next();
+            players.add(
+                    playerType == 1 ? new Player(playerName, new Symbol(playerSymbol.charAt(0)), PlayerType.HUMAN) :
+                    new Bot("Bot", new Symbol(playerSymbol.charAt(0)), PlayerType.BOT, BotDifficultyLevel.EASY)
+            );
+        }
 
-        System.out.println("ENTER THE BOARD SIZE");
-        int dimensions = sc.nextInt();
-
-        List<Player> players = List.of(
-                new Player("John", new Symbol('X'), PlayerType.HUMAN),
-                new Bot("Bot", new Symbol('O'), PlayerType.BOT, BotDifficultyLevel.EASY)
-        );
+        int dimensions = playersCount + 1;
 
         List<WinningStrategy> winningStrategies = List.of(
                 new RowWinningStrategy(),
