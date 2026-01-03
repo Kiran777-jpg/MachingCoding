@@ -3,6 +3,7 @@ package tictactoe.models;
 import tictactoe.exceptions.InvalidMoveException;
 import tictactoe.models.enums.CellState;
 import tictactoe.models.enums.GameState;
+import tictactoe.models.enums.PlayerType;
 import tictactoe.strategies.winningStrategy.WinningStrategy;
 
 import java.util.ArrayList;
@@ -67,6 +68,13 @@ public class Game {
             if(winningStrategy.checkWinner(board, move)) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    public boolean getcurrentPlayerBot() {
+        if(players != null) {
+            return players.get(nextMovePlayerIndex).getPlayerType().equals(PlayerType.BOT);
         }
         return false;
     }

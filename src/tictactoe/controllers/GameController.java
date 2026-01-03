@@ -33,6 +33,9 @@ public class GameController {
         game.makeMove();
     }
 
+    public boolean getcurrentPlayerBot(Game game) {
+        return game.getcurrentPlayerBot();
+    }
     public void undo(Game game) {
         // todo
     }
