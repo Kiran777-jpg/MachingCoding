@@ -6,11 +6,11 @@ import tictactoe.models.Move;
 import java.util.HashMap;
 
 public class DiagonalWinningStrategy implements WinningStrategy{
+
+    private final HashMap<Character, Integer> leftDiagonalMap = new HashMap<>();
+    private final HashMap<Character, Integer> rightDiagonalMap = new HashMap<>();
     @Override
     public boolean checkWinner(Board board, Move move) {
-        HashMap<Character, Integer> leftDiagonalMap = new HashMap<>();
-        HashMap<Character, Integer> rightDiagonalMap = new HashMap<>();
-
         int row = move.getCell().getRow();
         int col = move.getCell().getCol();
         Character aChar = move.getPlayer().getSymbol().getaChar();

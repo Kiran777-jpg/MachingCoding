@@ -53,7 +53,7 @@ public class Game {
         Move finalMove =new Move(cell, currentPlayer);
         moves.add(finalMove);
 
-        if(checkWinner(move)) {
+        if(checkWinner(finalMove)) {
             winner = currentPlayer;
             gameState = GameState.ENDED;
         } else if(moves.size() == (board.getDimensions() * board.getDimensions())) {

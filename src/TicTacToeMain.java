@@ -50,11 +50,11 @@ public class TicTacToeMain {
 
             if(!gameController.getcurrentPlayerBot(game)) {
                 System.out.println("Do you want to undo ? y/n");
-            }
-            String isUndo = sc.next();
-            if(isUndo.equals("y")) {
-                gameController.undo(game);
-                continue;
+                String isUndo = sc.next();
+                if(isUndo.equals("y")) {
+                    gameController.undo(game);
+                    continue;
+                }
             }
 
             gameController.makeMove(game);
