@@ -1,5 +1,7 @@
 package tictactoe.models;
 
+import tictactoe.models.enums.CellState;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,7 @@ public class Board {
 
     public Board(int dimensions) {
         this.dimensions = dimensions;
+        board = new ArrayList<>();
 
         for(int i=0;i<dimensions;i++) {
             board.add(new ArrayList<>());
@@ -17,8 +20,24 @@ public class Board {
                 board.get(i).add(new Cell(i, j));
             }
         }
+    }
 
-     }
+    public void printBoard() {
+        for(List<Cell> row : board) {
+            for(Cell cell : row) {
+//                if(cell.getCellState().equals(CellState.EMPTY)) {
+//                    System.out.print("| - |");
+//                } else {
+//                    System.out.print("| " + cell.getPlayer().getSymbol().getaChar() + " |");
+//                }
+
+                // print functionality can also implemented by particular cell as well
+                cell.display();
+            }
+            System.out.println();
+        }
+    }
+
     public int getDimensions() {
         return dimensions;
     }

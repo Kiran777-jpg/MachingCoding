@@ -1,6 +1,7 @@
 package tictactoe.models;
 
 import tictactoe.models.enums.GameState;
+import tictactoe.strategies.winningStrategy.WinningStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,10 @@ public class Game {
         this.gameState = GameState.IN_PROGRESS;
         this.nextMovePlayerIndex = 0;
         this.winningStrategies = winningStrategies;
+    }
+
+    public void printBoard() {
+        board.printBoard();
     }
 
     public Board getBoard() {
