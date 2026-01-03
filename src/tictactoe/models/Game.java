@@ -1,5 +1,7 @@
 package tictactoe.models;
 
+import tictactoe.exceptions.InvalidMoveException;
+import tictactoe.models.enums.CellState;
 import tictactoe.models.enums.GameState;
 import tictactoe.strategies.winningStrategy.WinningStrategy;
 
@@ -26,6 +28,31 @@ public class Game {
         this.gameState = GameState.IN_PROGRESS;
         this.nextMovePlayerIndex = 0;
         this.winningStrategies = winningStrategies;
+    }
+
+    public void makeMove() throws InvalidMoveException {
+        Player currentPlayer = players.get(nextMovePlayerIndex);
+        System.out.println("This is " + currentPlayer.getName() + "'s move.");
+
+        // Player chooses the move
+        Move move = currentPlayer.makeMove();
+
+        // validate the move
+        if(!validateMove(move)) {
+            throw new InvalidMoveException("Invalid move, please retry");
+        }
+
+        // move is valid, add to board
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+        Cell cell = board.getBoard().get(row).get(col);
+        cell.setCellState(CellState.FILLED);
+        cell.setPlayer(currentPlayer);
+
+        Move finalMove =new Move(cell, currentPlayer);
+        moves.add(finalMove);
+
+        nextMovePlayerIndex = (nextMovePlayerIndex + 1)%players.size();
     }
 
     public void printBoard() {
@@ -86,6 +113,21 @@ public class Game {
 
     public void setWinningStrategies(List<WinningStrategy> winningStrategies) {
         this.winningStrategies = winningStrategies;
+    }
+
+    private boolean validateMove(Move move) {
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+
+        if(row < 0 || row >= board.getDimensions() || col < 0 || col >= board.getDimensions()) {
+            return false;
+        }
+
+        if(!board.getBoard().get(row).get(col).getCellState().equals(CellState.EMPTY)) {
+            return false;
+        }
+
+        return true;
     }
 
     public static class Builder {
