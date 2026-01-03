@@ -24,12 +24,16 @@ public class Board {
     public void printBoard() {
         for(List<Cell> row : board) {
             for(Cell cell : row) {
-                if(cell.getCellState().equals(CellState.EMPTY)) {
-                    System.out.print("| - |");
-                } else {
-                    System.out.print("| " + cell.getPlayer().getSymbol().getaChar() + " |");
-                }
+//                if(cell.getCellState().equals(CellState.EMPTY)) {
+//                    System.out.print("| - |");
+//                } else {
+//                    System.out.print("| " + cell.getPlayer().getSymbol().getaChar() + " |");
+//                }
+
+                // print functionality can also implemented by particular cell as well
+                cell.display();
             }
+            System.out.println();
         }
     }
 
