@@ -16,7 +16,7 @@ public class Player {
         this.playerType = playerType;
     }
 
-    public Move makeMove() {
+    public Move makeMove(Board board) {
         System.out.println("Please enter the row number where you want the move");
         int row = sc.nextInt();
 

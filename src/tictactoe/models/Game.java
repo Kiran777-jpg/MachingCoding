@@ -36,7 +36,7 @@ public class Game {
         System.out.println("This is " + currentPlayer.getName() + "'s move.");
 
         // Player chooses the move
-        Move move = currentPlayer.makeMove();
+        Move move = currentPlayer.makeMove(board);
 
         // validate the move
         if(!validateMove(move)) {
@@ -53,7 +53,7 @@ public class Game {
         Move finalMove =new Move(cell, currentPlayer);
         moves.add(finalMove);
 
-        if(checkWinner(move)) {
+        if(checkWinner(finalMove)) {
             winner = currentPlayer;
             gameState = GameState.ENDED;
         } else if(moves.size() == (board.getDimensions() * board.getDimensions())) {
