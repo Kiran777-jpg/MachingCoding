@@ -36,7 +36,7 @@ public class Game {
         System.out.println("This is " + currentPlayer.getName() + "'s move.");
 
         // Player chooses the move
-        Move move = currentPlayer.makeMove();
+        Move move = currentPlayer.makeMove(board);
 
         // validate the move
         if(!validateMove(move)) {
