@@ -1,4 +1,5 @@
 import tictactoe.controllers.GameController;
+import tictactoe.exceptions.InvalidMoveException;
 import tictactoe.models.Bot;
 import tictactoe.models.Game;
 import tictactoe.models.Player;
@@ -17,7 +18,7 @@ import java.util.Scanner;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class TicTacToeMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidMoveException {
         System.out.println("Hello world, printed by " + Thread.currentThread().getName());
 
         GameController gameController = new GameController();
@@ -46,6 +47,15 @@ public class TicTacToeMain {
             //1. show the board
             //2. make a move
             gameController.printBoard(game);
+
+            System.out.println("Do you want to undo ? y/n");
+            String isUndo = sc.next();
+            if(isUndo.equals("y")) {
+                gameController.undo(game);
+                continue;
+            }
+
+            gameController.makeMove(game);
         }
     }
 }

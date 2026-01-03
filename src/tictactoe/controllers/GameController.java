@@ -1,5 +1,6 @@
 package tictactoe.controllers;
 
+import tictactoe.exceptions.InvalidMoveException;
 import tictactoe.models.Game;
 import tictactoe.models.Player;
 import tictactoe.models.enums.GameState;
@@ -22,5 +23,13 @@ public class GameController {
 
     public void printBoard(Game game) {
         game.printBoard();
+    }
+
+    public void makeMove(Game game) throws InvalidMoveException {
+        game.makeMove();
+    }
+
+    public void undo(Game game) {
+        // todo
     }
 }
