@@ -1,5 +1,7 @@
 package parkinglot.Models;
 
+import parkinglot.Models.enums.VehicleType;
+
 public class Vehicle extends BaseModel{
     private int number;
     private VehicleType vehicleType;

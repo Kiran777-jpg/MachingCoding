@@ -1,4 +1,4 @@
-package parkinglot.Models;
+package parkinglot.Models.enums;
 
 public enum VehicleType {
     SEDAN,

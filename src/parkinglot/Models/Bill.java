@@ -1,5 +1,7 @@
 package parkinglot.Models;
 
+import parkinglot.Models.enums.BillStatus;
+
 import java.util.Date;
 import java.util.List;
 

@@ -1,5 +1,7 @@
 package parkinglot.Models;
 
+import parkinglot.Models.enums.ParkingFloorStatus;
+
 import java.util.List;
 
 public class ParkingFloor extends BaseModel{

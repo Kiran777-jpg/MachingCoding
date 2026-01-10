@@ -1,5 +1,8 @@
 package parkinglot.Models;
 
+import parkinglot.Models.enums.PaymentMode;
+import parkinglot.Models.enums.PaymentStatus;
+
 import java.util.Date;
 
 public class Payment extends BaseModel{
