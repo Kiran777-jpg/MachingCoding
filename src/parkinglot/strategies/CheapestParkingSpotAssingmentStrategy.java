@@ -8,6 +8,6 @@ public class CheapestParkingSpotAssingmentStrategy implements ParkingSpotAssingm
 
     @Override
     public ParkingSpot assignParkingSpot(ParkingLot parkingLot, Vehicle vehicle) {
-        return null;
+        return new ParkingSpot();
     }
 }

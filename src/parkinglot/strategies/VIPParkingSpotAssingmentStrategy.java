@@ -8,6 +8,6 @@ public class VIPParkingSpotAssingmentStrategy implements ParkingSpotAssingmentSt
 
     @Override
     public ParkingSpot assignParkingSpot(ParkingLot parkingLot, Vehicle vehicle) {
-        return null;
+        return new ParkingSpot();
     }
 }

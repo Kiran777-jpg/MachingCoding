@@ -8,6 +8,6 @@ public class NearestParkingSpotAssingmentStrategy implements ParkingSpotAssingme
 
     @Override
     public ParkingSpot assignParkingSpot(ParkingLot parkingLot, Vehicle vehicle) {
-        return null;
+        return new ParkingSpot();
     }
 }
