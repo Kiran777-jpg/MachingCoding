@@ -1,3 +1,5 @@
+package tictactoe;
+
 import tictactoe.controllers.GameController;
 import tictactoe.exceptions.InvalidMoveException;
 import tictactoe.models.Bot;
