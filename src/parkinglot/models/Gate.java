@@ -1,7 +1,7 @@
-package parkinglot.Models;
+package parkinglot.models;
 
-import parkinglot.Models.enums.GateStatus;
-import parkinglot.Models.enums.GateType;
+import parkinglot.models.enums.GateStatus;
+import parkinglot.models.enums.GateType;
 
 public class Gate extends BaseModel{
     private int gateNumber;

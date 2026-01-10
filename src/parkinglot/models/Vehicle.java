@@ -1,6 +1,6 @@
-package parkinglot.Models;
+package parkinglot.models;
 
-import parkinglot.Models.enums.VehicleType;
+import parkinglot.models.enums.VehicleType;
 
 public class Vehicle extends BaseModel{
     private int number;

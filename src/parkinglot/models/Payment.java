@@ -1,7 +1,7 @@
-package parkinglot.Models;
+package parkinglot.models;
 
-import parkinglot.Models.enums.PaymentMode;
-import parkinglot.Models.enums.PaymentStatus;
+import parkinglot.models.enums.PaymentMode;
+import parkinglot.models.enums.PaymentStatus;
 
 import java.util.Date;
 

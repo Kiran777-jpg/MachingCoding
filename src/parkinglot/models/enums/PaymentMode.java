@@ -1,4 +1,4 @@
-package parkinglot.Models.enums;
+package parkinglot.models.enums;
 
 public enum PaymentMode {
     CASH,

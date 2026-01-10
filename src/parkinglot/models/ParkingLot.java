@@ -1,7 +1,7 @@
-package parkinglot.Models;
+package parkinglot.models;
 
-import parkinglot.Models.enums.ParkingLotStatus;
-import parkinglot.Models.enums.VehicleType;
+import parkinglot.models.enums.ParkingLotStatus;
+import parkinglot.models.enums.VehicleType;
 
 import java.util.List;
 
