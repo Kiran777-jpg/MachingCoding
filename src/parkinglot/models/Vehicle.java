@@ -3,15 +3,15 @@ package parkinglot.models;
 import parkinglot.models.enums.VehicleType;
 
 public class Vehicle extends BaseModel{
-    private int number;
+    private String number;
     private VehicleType vehicleType;
     private String ownerName;
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
